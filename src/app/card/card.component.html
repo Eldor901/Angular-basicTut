@@ -1,0 +1,36 @@
+<div class="card">
+  <h2 [ngStyle]="{
+  color: card.title.length < 5 ? 'blue' : 'red',
+  fontWeight: card.title.length < 7 ? 'normal': 'bold'
+  }"> {{index}} {{card.title}}</h2>
+  <p> {{card.text}}</p>
+  <pre>{{obj | json}}</pre>
+
+<!--  <p class="text" [ngClass]="{-->
+<!--     blue: textColor === 'blue',-->
+<!--     red: textColor === 'red',-->
+<!--     green: textColor === 'green'-->
+<!--  }">{{text}}</p>-->
+
+
+  <p class="text" [class.blue] = "textColor === 'blue'"  [class.red] = "textColor === 'red'" [class.green]= "textColor === 'green'" >{{card.text}}</p>
+
+  <div class="buttons">
+    <button (click)="textColor = 'blue'">Set Blue</button>
+    <button  (click)="textColor = 'green'">Set Green</button>
+    <button (click)="textColor = 'red'">Set Red</button>
+  </div>
+
+
+  <div>
+    <strong>{{cardDate | date: 'long'}}</strong>
+  </div>
+
+<!--  <div>-->
+<!--    <input type="text" #myInput (input)="inputHandler(myInput.value)" [value]="title">-->
+<!--  </div>-->
+  <div>
+    <input type="text" [(ngModel)]="card.title" (ngModelChange)="changeHandler()">
+  </div>
+
+</div>
